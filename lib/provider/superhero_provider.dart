@@ -8,9 +8,9 @@ class SuperheroProvider extends ChangeNotifier {
   List<SuperHero>? superheroes = [];
   List<SuperHero>? filteredSuperheroes = [];
   bool isloading = false;
-  String errorMessaqge = "";
+  String? errorMessaqge = "";
 
-  bool get ErrorExist => errorMessaqge == "";
+  bool get errorExist => errorMessaqge == "";
 
   void toggleLoading() {
     isloading = !isloading;
