@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:herodex/common/enums.dart';
 import 'package:herodex/provider/superhero_provider.dart';
+import 'package:herodex/utilities/app_images.dart';
 import 'package:provider/provider.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:herodex/utilities/theme/app_color.dart';
+import 'package:herodex/utilities/theme/app_theme.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,13 +16,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int chipIndex = 0;
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     var superHeroprovider = Provider.of<SuperheroProvider>(context);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 32, 32, 32),
       appBar: AppBar(
-        backgroundColor: AppColor.appBarColor,
+        backgroundColor: AppTheme.appBarColor,
         title: Text(
           'Herodex',
           style: TextStyle(
@@ -41,7 +43,7 @@ class _HomeState extends State<Home> {
                   Icon(
                     FontAwesome.binoculars_solid,
                     size: 100,
-                    color: AppColor.buttonBgColor,
+                    color: AppTheme.buttonBgColor,
                   ),
                   Text(
                     superHeroprovider.errorMessaqge ?? "",
@@ -58,12 +60,36 @@ class _HomeState extends State<Home> {
                     child: Row(
                       spacing: 12,
                       children: [
-                        ...HeroUniverse.values.map(
-                          (value) => ChoiceChip(
+                        ...HeroUniverse.values.map((value) {
+                          isSelected =
+                              chipIndex == HeroUniverse.values.indexOf(value);
+                          return ChoiceChip(
                             shape: RoundedSuperellipseBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
                             showCheckmark: false,
+                            surfaceTintColor: Colors.transparent,
+                            selectedColor: Colors.blue,
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            elevation: 0,
+
+                            avatar: Image(
+                              image: switch (value) {
+                                HeroUniverse.all => AssetImage(AppImages.all),
+                                HeroUniverse.dc => AssetImage(AppImages.dclogo),
+
+                                HeroUniverse.marvel => AssetImage(
+                                  AppImages.marvelLogo,
+                                ),
+                                HeroUniverse.darkHorse => AssetImage(
+                                  AppImages.darkHorseLogo,
+                                ),
+                              },
+                              width: 24,
+                              height: 24,
+                              fit: BoxFit.fill,
+                            ),
                             label: Text(
                               value.label,
                               style: TextStyle(
@@ -72,8 +98,7 @@ class _HomeState extends State<Home> {
                                     GoogleFonts.schibstedGrotesk().fontFamily,
                               ),
                             ),
-                            selected:
-                                chipIndex == HeroUniverse.values.indexOf(value),
+                            selected: isSelected,
                             onSelected: (selected) {
                               setState(() {
                                 chipIndex = selected
@@ -81,8 +106,8 @@ class _HomeState extends State<Home> {
                                     : chipIndex;
                               });
                             },
-                          ),
-                        ),
+                          );
+                        }),
                       ],
                     ),
                   ),
