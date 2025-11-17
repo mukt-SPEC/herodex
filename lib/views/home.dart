@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:herodex/common/enums.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/app_images.dart';
+import 'package:herodex/views/details_page.dart';
+import 'package:herodex/widgets/superhero_list.dart';
 import 'package:provider/provider.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
@@ -21,12 +23,22 @@ class _HomeState extends State<Home> {
   String selectedSegment = 'male';
   int chipIndex = 0;
   bool isSelected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<SuperheroProvider>().fetchSuperheroes();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var superHeroprovider = Provider.of<SuperheroProvider>(context);
     return Scaffold(
       backgroundColor: AppTheme.scaffoldBgColor,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         elevation: 0,
         backgroundColor: AppTheme.scaffoldBgColor,
         title: Text(
@@ -161,6 +173,64 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
+                  ),
+
+                  Expanded(
+                    child: superHeroprovider.filteredSuperheroes!.isEmpty
+                        ? Center(
+                            child: Column(
+                              spacing: 8,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'No heroes found',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: GoogleFonts.schibstedGrotesk()
+                                        .fontFamily,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    superHeroprovider.fetchSuperheroes();
+                                  },
+                                  child: Text(
+                                    'Retry',
+                                    style: TextStyle(
+                                      color: AppTheme.buttonTextColor,
+                                      fontFamily: GoogleFonts.schibstedGrotesk()
+                                          .fontFamily,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount:
+                                superHeroprovider.filteredSuperheroes!.length,
+                            itemBuilder: (context, index) {
+                              return SuperHeroCard(
+                                superHero: superHeroprovider
+                                    .filteredSuperheroes![index],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                        return DetailsPage(
+                                          superHero: superHeroprovider
+                                              .filteredSuperheroes![index],
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                   ),
                 ],
               ),
