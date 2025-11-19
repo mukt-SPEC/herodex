@@ -16,6 +16,18 @@ class AppNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return BottomNavigationBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      type: BottomNavigationBarType.fixed,
+      currentIndex: selected,
+      onTap: (index) => onSelected(index),
+      items: options.entries
+          .map(
+            (entry) =>
+                BottomNavigationBarItem(icon: entry.value, label: entry.key),
+          )
+          .toList(),
+    );
   }
 }
