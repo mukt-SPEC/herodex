@@ -4,6 +4,7 @@ import 'package:herodex/common/enums.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/app_images.dart';
 import 'package:herodex/views/details_page.dart';
+import 'package:herodex/widgets/stats.dart';
 import 'package:herodex/widgets/superhero_list.dart';
 import 'package:provider/provider.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -97,21 +98,28 @@ class _HomeState extends State<Home> {
                               side: BorderSide(style: BorderStyle.none),
                               pressElevation: 0,
 
-                              // avatar: Image(
-                              //   image: switch (value) {
-                              //     HeroUniverse.all => AssetImage(AppImages.all),
-                              //     HeroUniverse.dc => AssetImage(AppImages.dclogo),
+                              // avatar: CircleAvatar(
+                              //   radius: 24,
+                              //   child: Image(
+                              //     image: switch (value) {
+                              //       HeroUniverse.all => AssetImage(
+                              //         AppImages.all,
+                              //       ),
+                              //       HeroUniverse.dc => AssetImage(
+                              //         AppImages.dclogo,
+                              //       ),
 
-                              //     HeroUniverse.marvel => AssetImage(
-                              //       AppImages.marvelLogo,
-                              //     ),
-                              //     HeroUniverse.darkHorse => AssetImage(
-                              //       AppImages.darkHorseLogo,
-                              //     ),
-                              //   },
-                              //   width: 24,
-                              //   height: 24,
-                              //   fit: BoxFit.fill,
+                              //       HeroUniverse.marvel => AssetImage(
+                              //         AppImages.marvelLogo,
+                              //       ),
+                              //       HeroUniverse.darkHorse => AssetImage(
+                              //         AppImages.darkHorseLogo,
+                              //       ),
+                              //     },
+                              //     width: 24,
+                              //     height: 24,
+                              //     fit: BoxFit.fill,
+                              //   ),
                               // ),
                               label: Text(
                                 value.label,

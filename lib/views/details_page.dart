@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:herodex/model/superhero.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
 import 'package:herodex/widgets/nav_bar.dart';
+import 'package:herodex/widgets/stats.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -48,22 +49,30 @@ class _DetailsPageState extends State<DetailsPage> {
             child: Column(
               spacing: 16,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(24),
-                  child: Image.network(
-                    width: double.infinity,
-                    widget.superHero!.images!.lg!,
+                SingleChildScrollView(
+                  child: Column(
+                    spacing: 16,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadiusGeometry.circular(24),
+                        child: Image.network(
+                          width: double.infinity,
+                          widget.superHero!.images!.lg!,
+                        ),
+                      ),
+                      Text(
+                        widget.superHero!.biography!.fullName!,
+                        style: TextStyle(
+                          color: AppTheme.textPrimaryColor,
+                          fontSize: 24,
+                          fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  widget.superHero!.biography!.fullName!,
-                  style: TextStyle(
-                    color: AppTheme.textPrimaryColor,
-                    fontSize: 24,
-                    fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                
               ],
             ),
           ),
