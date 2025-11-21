@@ -4,6 +4,7 @@ import 'package:herodex/common/enums.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/app_images.dart';
 import 'package:herodex/views/details_page.dart';
+import 'package:herodex/views/search_page.dart';
 import 'package:herodex/widgets/stats.dart';
 import 'package:herodex/widgets/superhero_list.dart';
 import 'package:provider/provider.dart';
@@ -49,6 +50,21 @@ class _HomeState extends State<Home> {
             fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchHeroPage(superHeroprovider.superheroes!),
+              );
+            },
+            icon: Icon(
+              Iconsax.search_normal_1_outline,
+              color: AppTheme.textPrimaryColor,
+            ),
+          ),
+          SizedBox(width: 8),
+        ],
       ),
 
       body: Padding(
