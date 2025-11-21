@@ -52,8 +52,8 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              showSearch(
+            onPressed: () async {
+              final result = await showSearch(
                 context: context,
                 delegate: SearchHeroPage(superHeroprovider.superheroes!),
               );
