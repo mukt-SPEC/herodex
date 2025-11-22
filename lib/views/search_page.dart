@@ -44,7 +44,14 @@ class SearchHeroPage extends SearchDelegate<SuperHero> {
       itemCount: results.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(results[index].name!),
+          title: Text(
+            results[index].name!,
+            style: TextStyle(
+              fontSize: 14,
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              color: Color(0xffb9b9b9),
+            ),
+          ),
           onTap: () {
             close(context, results[index]);
             Navigator.push(
@@ -74,7 +81,14 @@ class SearchHeroPage extends SearchDelegate<SuperHero> {
       itemCount: suggestions.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(suggestions[index].name!),
+          title: Text(
+            suggestions[index].name!,
+            style: TextStyle(
+              fontSize: 14,
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              color: Color(0xffb9b9b9),
+            ),
+          ),
           onTap: () {
             query = suggestions[index].name!;
             showResults(context);
@@ -98,17 +112,23 @@ class SearchHeroPage extends SearchDelegate<SuperHero> {
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context).copyWith(
       hintColor: Colors.white,
-      appBarTheme: AppBarTheme(backgroundColor: AppTheme.appBarColor),
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppTheme.appBarColor,
+        iconTheme: IconThemeData(color: Colors.white),
+        scrolledUnderElevation: 0,
+        elevation: 0,
+      ),
+
+      scaffoldBackgroundColor: AppTheme.scaffoldBgColor,
+      textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.white),
+      inputDecorationTheme: InputDecorationTheme(
+        border: InputBorder.none,
+        hintStyle: TextStyle(
+          fontSize: 14,
+          fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+          color: Color(0xffb9b9b9),
+        ),
+      ),
     );
   }
-
-  @override
-  InputDecorationTheme? get searchFieldDecorationTheme => InputDecorationTheme(
-    helperStyle: TextStyle(color: Colors.white),
-    labelStyle: TextStyle(color: Colors.white),
-    fillColor: Colors.white,
-    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
-    outlineBorder: BorderSide.none,
-    hintStyle: TextStyle(color: Colors.white),
-  );
 }
