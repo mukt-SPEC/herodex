@@ -33,13 +33,51 @@ class _DetailsPageState extends State<DetailsPage> {
       appBar: AppBar(
         foregroundColor: AppTheme.textPrimaryColor,
         backgroundColor: AppTheme.scaffoldBgColor,
-        title: Text(
-          widget.superHero!.name!,
-          style: TextStyle(
-            fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
-            fontWeight: FontWeight.w500,
+        title: switch (selectedOption) {
+          'Profile' => Text(
+            'Personal Information',
+            style: TextStyle(
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
+          'Stats' => Text(
+            'Power Stats',
+            style: TextStyle(
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          'Info' => Text(
+            'Detailed Info',
+            style: TextStyle(
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          'Appearance' => Text(
+            'Appearance',
+            style: TextStyle(
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+
+          'Work' => Text(
+            'Work',
+            style: TextStyle(
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          _ => Text(
+            'details',
+            style: TextStyle(
+              fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        },
         centerTitle: true,
       ),
       body: Padding(
@@ -127,10 +165,10 @@ class PersonalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 16,
+      spacing: 8,
       children: [
         Column(
-          spacing: 16,
+          spacing: 8,
           children: [
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(24),
@@ -140,16 +178,41 @@ class PersonalInfo extends StatelessWidget {
               ),
             ),
             Text(
+              'Full Name',
+              style: TextStyle(
+                color: AppTheme.textPrimaryColor,
+                fontSize: 14,
+                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+            Text(
               widget.superHero!.biography!.fullName!,
               style: TextStyle(
                 color: AppTheme.textPrimaryColor,
-                fontSize: 24,
+                fontSize: 20,
                 fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
                 fontWeight: FontWeight.w600,
               ),
             ),
-
-            SizedBox(height: 16),
+            Text(
+              'Alias',
+              style: TextStyle(
+                color: AppTheme.textPrimaryColor,
+                fontSize: 14,
+                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+            Text(
+              widget.superHero!.name!,
+              style: TextStyle(
+                color: AppTheme.textPrimaryColor,
+                fontSize: 20,
+                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
       ],
