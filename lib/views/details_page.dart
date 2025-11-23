@@ -4,6 +4,7 @@ import 'package:herodex/model/superhero.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
 import 'package:herodex/widgets/nav_bar.dart';
+import 'package:herodex/widgets/work.dart';
 
 import 'package:icons_plus/icons_plus.dart';
 
@@ -79,6 +80,12 @@ class _DetailsPageState extends State<DetailsPage> {
           ),
         },
         centerTitle: true,
+        actions: [
+          CircleAvatar(
+            backgroundImage: NetworkImage(widget.superHero!.images!.xs!),
+          ),
+          SizedBox(width: 20),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
@@ -91,7 +98,7 @@ class _DetailsPageState extends State<DetailsPage> {
             height: 200,
             width: 200,
           ),
-          'Work' => Container(color: Colors.blue, height: 200, width: 200),
+          'Work' => WorkPage(widget: widget),
           _ => Container(),
         },
       ),
