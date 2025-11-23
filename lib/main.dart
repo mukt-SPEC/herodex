@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/views/home.dart';
+
 import 'package:provider/provider.dart';
 
 void main() {

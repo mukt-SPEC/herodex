@@ -5,7 +5,7 @@ import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/app_images.dart';
 import 'package:herodex/views/details_page.dart';
 import 'package:herodex/views/search_page.dart';
-import 'package:herodex/widgets/stats.dart';
+
 import 'package:herodex/widgets/superhero_list.dart';
 import 'package:provider/provider.dart';
 import 'package:icons_plus/icons_plus.dart';

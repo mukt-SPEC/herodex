@@ -26,7 +26,7 @@ class SearchHeroPage extends SearchDelegate<SuperHero> {
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
-        close(context, query as SuperHero);
+        close(context, SuperHero());
       },
     );
   }
