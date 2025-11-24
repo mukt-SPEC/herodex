@@ -109,7 +109,6 @@ class _DetailsPageState extends State<DetailsPage> {
           width: 306,
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            backgroundBlendMode: BlendMode.overlay,
             color: AppTheme.appBarColor,
             borderRadius: BorderRadius.circular(48),
           ),
@@ -195,6 +194,7 @@ class PersonalInfo extends StatelessWidget {
             ),
             Text(
               widget.superHero!.biography!.fullName!,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppTheme.textPrimaryColor,
                 fontSize: 20,
