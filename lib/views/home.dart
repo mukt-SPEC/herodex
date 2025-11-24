@@ -75,16 +75,40 @@ class _HomeState extends State<Home> {
             ? Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 8,
                   children: [
                     Icon(
-                      FontAwesome.binoculars_solid,
-                      size: 100,
+                      Iconsax.wifi_bold,
+                      size: 64,
                       color: AppTheme.buttonBgColor,
                     ),
                     Text(
                       superHeroprovider.errorMessaqge ?? "",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+
+                        fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+                        fontSize: 16,
+                      ),
                     ),
+                    SizedBox(height: 8),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size.fromHeight(8),
+                      ),
+                      onPressed: () {
+                        superHeroprovider.fetchSuperheroes();
+                      },
+                      child: Text(
+                        'Retry',
+                        style: TextStyle(
+                          color: AppTheme.buttonTextColor,
+                          fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 64),
                   ],
                 ),
               )

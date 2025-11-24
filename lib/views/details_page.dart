@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:herodex/model/superhero.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
+import 'package:herodex/widgets/Appearance.dart';
+import 'package:herodex/widgets/appearance_container.dart';
 import 'package:herodex/widgets/nav_bar.dart';
 import 'package:herodex/widgets/work.dart';
 
@@ -21,7 +23,7 @@ class _DetailsPageState extends State<DetailsPage> {
     "Profile": Icon(Iconsax.user_bold),
     "Stats": Icon(Iconsax.graph_bold),
     "Info": Icon(Iconsax.info_circle_bold),
-    "Appearance": Icon(Iconsax.emoji_normal_bold),
+    "Appearance": Icon(Iconsax.emoji_happy_bold),
     "Work": Icon(Iconsax.book_square_bold),
   };
 
@@ -93,11 +95,7 @@ class _DetailsPageState extends State<DetailsPage> {
           'Profile' => PersonalInfo(widget: widget),
           'Stats' => Container(color: Colors.white, height: 200, width: 200),
           'Info' => Container(color: Colors.yellow, height: 200, width: 200),
-          'Appearance' => Container(
-            color: const Color.fromARGB(255, 151, 106, 106),
-            height: 200,
-            width: 200,
-          ),
+          'Appearance' => AppearanceSection(widget: widget),
           'Work' => WorkPage(widget: widget),
           _ => Container(),
         },
