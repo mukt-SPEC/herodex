@@ -26,13 +26,13 @@ class AppearanceContainer extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 12,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(icon, color: Colors.white),
               Text(
                 title,
                 style: TextStyle(
-                  color: AppTheme.textPrimaryColor,
+                  color: Color(0xffb9b9b9),
                   fontSize: 14,
                   fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
                   fontWeight: FontWeight.normal,
