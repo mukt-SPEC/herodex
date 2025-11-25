@@ -42,7 +42,7 @@ class AppearanceContainer extends StatelessWidget {
                 value,
                 style: TextStyle(
                   color: AppTheme.textPrimaryColor,
-                  fontSize: 28,
+                  fontSize: 24,
                   fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
                   fontWeight: FontWeight.normal,
                 ),
