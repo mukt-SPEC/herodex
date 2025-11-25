@@ -5,9 +5,9 @@ import 'package:herodex/views/details_page.dart';
 import 'package:herodex/widgets/appearance_container.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-class AppearanceSection extends StatelessWidget {
+class StatsPage extends StatelessWidget {
   final DetailsPage widget;
-  const AppearanceSection({super.key, required this.widget});
+  const StatsPage({super.key, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -22,35 +22,16 @@ class AppearanceSection extends StatelessWidget {
               children: [
                 Expanded(
                   child: AppearanceContainer(
-                    title: 'Height',
-                    value: widget.superHero!.appearance!.height![0],
-                    icon: FontAwesome.ruler_vertical_solid,
+                    title: 'Combat',
+                    value: widget.superHero!.powerstats!.combat!.toString(),
+                    icon: FontAwesome.person_harassing_solid,
                   ),
                 ),
                 Expanded(
                   child: AppearanceContainer(
-                    title: 'Weight',
-                    value: widget.superHero!.appearance!.weight![0],
-                    icon: FontAwesome.weight_scale_solid,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              spacing: 16,
-              children: [
-                Expanded(
-                  child: AppearanceContainer(
-                    title: 'Gender',
-                    value: widget.superHero!.appearance!.gender!,
-                    icon: FontAwesome.genderless_solid,
-                  ),
-                ),
-                Expanded(
-                  child: AppearanceContainer(
-                    title: 'Race',
-                    value: widget.superHero!.appearance!.race!,
-                    icon: Iconsax.emoji_normal_bold,
+                    title: 'Durability',
+                    value: widget.superHero!.powerstats!.durability!.toString(),
+                    icon: FontAwesome.shield_solid,
                   ),
                 ),
               ],
@@ -60,16 +41,36 @@ class AppearanceSection extends StatelessWidget {
               children: [
                 Expanded(
                   child: AppearanceContainer(
-                    title: 'Eye Color',
-                    value: widget.superHero!.appearance!.eyeColor!,
-                    icon: FontAwesome.eye_solid,
+                    title: 'Intelligence',
+                    value: widget.superHero!.powerstats!.intelligence
+                        .toString(),
+                    icon: FontAwesome.brain_solid,
                   ),
                 ),
                 Expanded(
                   child: AppearanceContainer(
-                    title: 'Hair Color',
-                    value: widget.superHero!.appearance!.hairColor!,
-                    icon: MingCute.hair_2_fill,
+                    title: 'Power',
+                    value: widget.superHero!.powerstats!.power!.toString(),
+                    icon: FontAwesome.bolt_lightning_solid,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              spacing: 16,
+              children: [
+                Expanded(
+                  child: AppearanceContainer(
+                    title: 'Speed',
+                    value: widget.superHero!.powerstats!.speed!.toString(),
+                    icon: FontAwesome.person_running_solid,
+                  ),
+                ),
+                Expanded(
+                  child: AppearanceContainer(
+                    title: 'Strength',
+                    value: widget.superHero!.powerstats!.strength!.toString(),
+                    icon: FontAwesome.dumbbell_solid,
                   ),
                 ),
               ],

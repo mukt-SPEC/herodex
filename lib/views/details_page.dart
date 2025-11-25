@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:herodex/model/superhero.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
+import 'package:herodex/views/stats_page.dart';
 import 'package:herodex/widgets/Appearance.dart';
 import 'package:herodex/widgets/appearance_container.dart';
 import 'package:herodex/widgets/nav_bar.dart';
@@ -93,7 +94,7 @@ class _DetailsPageState extends State<DetailsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
         child: switch (selectedOption) {
           'Profile' => PersonalInfo(widget: widget),
-          'Stats' => Container(color: Colors.white, height: 200, width: 200),
+          'Stats' => StatsPage(widget: widget),
           'Info' => Container(color: Colors.yellow, height: 200, width: 200),
           'Appearance' => AppearanceSection(widget: widget),
           'Work' => WorkPage(widget: widget),
@@ -171,54 +172,49 @@ class PersonalInfo extends StatelessWidget {
     return Column(
       spacing: 8,
       children: [
-        Column(
-          spacing: 8,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(24),
-              child: Image.network(
-                width: double.infinity,
-                widget.superHero!.images!.lg!,
-              ),
-            ),
-            Text(
-              'Full Name',
-              style: TextStyle(
-                color: AppTheme.textPrimaryColor,
-                fontSize: 14,
-                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            Text(
-              widget.superHero!.biography!.fullName!,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: AppTheme.textPrimaryColor,
-                fontSize: 20,
-                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Text(
-              'Alias',
-              style: TextStyle(
-                color: AppTheme.textPrimaryColor,
-                fontSize: 14,
-                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            Text(
-              widget.superHero!.name!,
-              style: TextStyle(
-                color: AppTheme.textPrimaryColor,
-                fontSize: 20,
-                fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
+        ClipRRect(
+          borderRadius: BorderRadiusGeometry.circular(24),
+          child: Image.network(
+            width: double.infinity,
+            widget.superHero!.images!.lg!,
+          ),
+        ),
+        Text(
+          'Full Name',
+          style: TextStyle(
+            color: AppTheme.textPrimaryColor,
+            fontSize: 14,
+            fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        Text(
+          widget.superHero!.biography!.fullName!,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: AppTheme.textPrimaryColor,
+            fontSize: 20,
+            fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Text(
+          'Alias',
+          style: TextStyle(
+            color: AppTheme.textPrimaryColor,
+            fontSize: 14,
+            fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        Text(
+          widget.superHero!.name!,
+          style: TextStyle(
+            color: AppTheme.textPrimaryColor,
+            fontSize: 20,
+            fontFamily: GoogleFonts.schibstedGrotesk().fontFamily,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ],
     );
