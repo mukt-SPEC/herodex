@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:herodex/model/superhero.dart';
 import 'package:herodex/provider/superhero_provider.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
+import 'package:herodex/views/detailed_info.dart';
 import 'package:herodex/views/stats_page.dart';
 import 'package:herodex/widgets/Appearance.dart';
 import 'package:herodex/widgets/appearance_container.dart';
@@ -34,7 +37,9 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.scaffoldBgColor,
+
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         foregroundColor: AppTheme.textPrimaryColor,
         backgroundColor: AppTheme.scaffoldBgColor,
         title: switch (selectedOption) {
@@ -95,7 +100,7 @@ class _DetailsPageState extends State<DetailsPage> {
         child: switch (selectedOption) {
           'Profile' => PersonalInfo(widget: widget),
           'Stats' => StatsPage(widget: widget),
-          'Info' => Container(color: Colors.yellow, height: 200, width: 200),
+          'Info' => DetailedInfo(widget: widget),
           'Appearance' => AppearanceSection(widget: widget),
           'Work' => WorkPage(widget: widget),
           _ => Container(),
@@ -108,7 +113,7 @@ class _DetailsPageState extends State<DetailsPage> {
           width: 306,
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: AppTheme.appBarColor,
+            color: AppTheme.appBarColor.withAlpha(230),
             borderRadius: BorderRadius.circular(48),
           ),
           child: Row(

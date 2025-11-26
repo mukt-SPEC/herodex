@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:herodex/views/details_page.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class WorkPage extends StatelessWidget {
   final DetailsPage widget;
@@ -14,9 +15,15 @@ class WorkPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: Column(
+          spacing: 8,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Icon(
+              FontAwesome.briefcase_solid,
+              color: Color(0xffb9b9b9),
+              size: 16,
+            ),
             Text(
               'Occupations',
               style: TextStyle(
@@ -34,7 +41,12 @@ class WorkPage extends StatelessWidget {
                 fontSize: 28,
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 8),
+            Icon(
+              FontAwesome.location_crosshairs_solid,
+              color: Color(0xffb9b9b9),
+              size: 16,
+            ),
             Text(
               'Base',
               style: TextStyle(
