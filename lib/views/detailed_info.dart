@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:herodex/utilities/app_images.dart';
 import 'package:herodex/utilities/theme/app_theme.dart';
 import 'package:herodex/views/details_page.dart';
 
@@ -9,6 +10,7 @@ class DetailedInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String publisher = widget.superHero!.biography!.publisher!;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0),
@@ -16,6 +18,19 @@ class DetailedInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 16,
           children: [
+            Container(
+              decoration: BoxDecoration(),
+              child: Image(
+                image: switch (publisher) {
+                  'dccomic' => AssetImage(AppImages.dclogo),
+                  'marvelcomic' => AssetImage(AppImages.marvelLogo),
+                  'darkhorsecomic' => AssetImage(AppImages.darkHorseLogo),
+                  (_) => AssetImage(AppImages.all),
+                },
+                width: 72,
+                height: 72,
+              ),
+            ),
             Biography(widget: widget),
             // SizedBox(height: 4),
             Connections(widget: widget),
